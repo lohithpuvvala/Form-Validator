@@ -44,6 +44,49 @@ h2 {
   position: relative;
 }
 
+#loading-container {
+  width: 260px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10px;
+  margin: auto;
+  margin: 0 10px 0 10px;
+  display: flex;
+  z-index: 0;
+}
+
+#loading-bar {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  line-height: 20px;
+  transition: width 0.3s ease-in-out;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.weak {
+  background-color: red;
+}
+.medium {
+  background-color: orange;
+}
+.strong {
+  background-color: green;
+}
+
+.strength {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+
 .form-control label {
   color: #777;
   display: block;
@@ -95,4 +138,8 @@ h2 {
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+}
+
+.comfirmpassword {
+  display: none;
 }
