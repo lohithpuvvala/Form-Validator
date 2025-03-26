@@ -21,41 +21,65 @@ function showSuccess(input){
 //Check email is valid
 function isValidEmail(email)
 {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
+}
+
+function checkRequired(inputArr)
+{
+    inputArr.forEach(input => {
+        console.log("1");
+        if(input.value.trim() === '')
+        {
+            let message;
+            if(input.id === "confirmpassword"){
+                message = `Enter Password Again!`;
+            }else{
+                message = `${input.id} is required!`;
+            }
+
+            showError(input,message);
+        }else{
+             showSuccess(input)
+        }
+    });
 }
 
 //Event Listeners
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    if(username.value === '')
-    {
-        showError(username,'Username is required');
-    }else{
-        showSuccess(username);
-    }
+    // if(username.value === '')
+    // {
+    //     showError(username,'Username is required');
+    // }else{
+    //     showSuccess(username);
+    // }
 
-    if(email.value === '')
-    {
-        showError(email,'Email ID is required!');
-    }else if(!isValidEmail(email.value)){
-        showError('Email is not Valid!')
-    }else{
-        showSuccess(email);
-    }
+    // if(email.value === '')
+    // {
+    //     showError(email,'Email ID is required!');
+    // }else if(!isValidEmail(email.value)){
+    //     showError(email,'Email is not Valid!')
+    // }else{
+    //     showSuccess(email);
+    // }
 
-    if(password.value === '')
-    {
-        showError(password,'Password is required');
-    }else{
-        showSuccess(password);
-    }
+    // if(password.value === '')
+    // {
+    //     showError(password,'Password is required');
+    // }else{
+    //     showSuccess(password);
+    // }
 
-    if(confirmpassword.value === '')
-    {
-        showError(confirmpassword,'Re-Enter the Password');
-    }else{
-        showSuccess(confirmpassword);
-    }
+    // if(confirmpassword.value === '')
+    // {
+    //     showError(confirmpassword,'Re-Enter the Password');
+    // }else{
+    //     showSuccess(confirmpassword);
+    // }
+
+
+    //Optmised Code
+    checkRequired([username,email,password,confirmpassword])
 });
